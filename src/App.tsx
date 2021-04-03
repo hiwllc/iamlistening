@@ -17,16 +17,6 @@ function App() {
     <>
       <Helmet>
         <title>{music?.name} - {music?.artist}</title>
-        <link rel="icon" href={music?.cover} />
-        <meta property="og:title" content={music?.name} />
-        <meta property="og:description" content={music?.artist} />
-        <meta property="og:image" content={music?.background} />
-        <meta property="og:type" content="website" />
-
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:image:src" content={music?.background} />
-        <meta name="twitter:title" content={music?.name} />
-        <meta name="twitter:description" content={music?.artist} />
       </Helmet>
 
       <Grid w="100%" h="100vh" background={`url(${music?.background})`} backgroundRepeat="no-repeat" backgroundPosition="center" backgroundSize="cover">
@@ -42,7 +32,7 @@ function App() {
               </Skeleton>
 
               <Skeleton isLoaded={status !== 'loading'}>
-                <Text fontSize="lg" color="white">from {music?.name}</Text>
+                <Text fontSize="lg" color="white">from {music?.artist}</Text>
               </Skeleton>
 
               <Button mt={4} as={Link} href={music?.url}>listen on spotify</Button>
