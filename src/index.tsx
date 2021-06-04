@@ -1,22 +1,21 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { QueryClient, QueryClientProvider } from 'react-query'
-import { ThemeProvider, CSSReset } from '@chakra-ui/react'
 import App from './App'
 import reportWebVitals from './reportWebVitals'
-import { theme } from './theme'
 
 const client = new QueryClient()
 
+if (process.env.NODE_ENV === 'development') {
+  const { worker } = require('./mocks/browser')
+  worker.start()
+}
+
 ReactDOM.render(
   <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <CSSReset />
-
-      <QueryClientProvider client={client}>
-        <App />
-      </QueryClientProvider>
-    </ThemeProvider>
+    <QueryClientProvider client={client}>
+      <App />
+    </QueryClientProvider>
   </React.StrictMode>,
   document.getElementById('root')
 )
