@@ -38,7 +38,7 @@ export function useMusic () {
   const { data, status } = useQuery<unknown, unknown, Music>('fetch-current-playing', () => fetchCurrentMusicPlaying())
 
   return {
-    music: data,
+    music: data as Music,
     status,
   }
 }
