@@ -25,6 +25,10 @@ async function fetchCurrentMusicPlaying () {
   const result = await fetch('/.netlify/functions/hello')
   const data: Data = await result.json()
 
+  if (!data) {
+    return ''
+  }
+
   return {
     artist: data.item.artists[0].name,
     background: data.item.album.images[0].url,

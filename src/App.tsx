@@ -1,23 +1,18 @@
 import { useMusic } from './useMusic'
+import { ReactComponent as Headphone } from './headphones.svg'
 
 function App() {
   const { music, status } = useMusic()
 
-  if (!music) {
-    return (
-      <span>loading</span>
-    )
-  }
-
   if (status === 'loading') {
     return (
       <main className="h-screen bg-green-100 grid place-items-center">
-        <span className="text-green-400 font-black select-none">loading</span>
+        <Headphone className="w-24 h-24 animate-bounce" title="loading" />
       </main>
     )
   }
 
-  if (!['loading', 'success'].includes(status)) {
+  if (!['loading', 'success'].includes(status) || !music) {
     return (
       <main className="h-screen bg-green-100 grid place-items-center">
         <span className="text-green-400 font-black select-none">i am not listening</span>
